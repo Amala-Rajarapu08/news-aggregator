@@ -1,0 +1,12 @@
+spring:
+  config:
+    import: optional:file:../.env[.properties],optional:file:.env[.properties]
+  jpa:
+    show-sql: false
+
+app:
+  environment: ${APP_ENVIRONMENT:local}
+  jwt:
+    cookie-secure: ${JWT_COOKIE_SECURE:false}
+  cors:
+    allowed-origins: ${APP_CORS_ALLOWED_ORIGINS:http://localhost:5180,http://127.0.0.1:5180,http://localhost:5181,http://127.0.0.1:5181,http://localhost:5182,http://127.0.0.1:5182}

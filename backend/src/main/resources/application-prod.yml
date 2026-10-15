@@ -1,0 +1,6 @@
+app:
+  environment: ${APP_ENVIRONMENT:production}
+
+spring:
+  jpa:
+    show-sql: false

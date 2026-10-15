@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    url: ${VERIFY_DATABASE_URL:jdbc:h2:mem:pulseai-test;DB_CLOSE_DELAY=-1}
+    username: ${VERIFY_DATABASE_USERNAME:sa}
+    password: ${VERIFY_DATABASE_PASSWORD:}
+    driver-class-name: ${VERIFY_DATABASE_DRIVER:org.h2.Driver}
+  jpa:
+    database-platform: ${VERIFY_DATABASE_DIALECT:org.hibernate.dialect.H2Dialect}
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+    locations: classpath:db/migration,classpath:db/test-migration
+    target: ${VERIFY_FLYWAY_TARGET:5.2}
+
+management:
+  health:
+    db:
+      enabled: true
+
+app:
+  environment: test
+  events:
+    backfill-initial-delay-ms: 3600000
+    backfill-interval-ms: 3600000
+  jwt:
+    secret-base64: cHVsc2VhaS10ZXN0LWp3dC1zaWduaW5nLWtleS0zMi1ieXRlcy1sb25n
+    issuer: pulseai-test
+    access-token-ttl: PT5M
+  news:
+    image-backfill:
+      enabled: false

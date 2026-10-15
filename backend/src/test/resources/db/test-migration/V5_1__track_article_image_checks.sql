@@ -1,0 +1,1 @@
+ALTER TABLE articles ADD COLUMN image_checked_at TIMESTAMP WITH TIME ZONE;
